@@ -1,154 +1,99 @@
-<html class="wf-sourcecodepro-n4-active wf-active"><head>
-  <meta charset="utf-8">
-  <title>Fitter Happier Nick</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: 'Avenir Next', sans-serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      line-height: 1.5;
-      padding: 1em 1.5em;
-      margin: 0 auto;
-      color: rgba(255,255,255,.8);
-      background-color: #f37;
-      background-image: linear-gradient(white, #f37);
-    }
-    @media (min-width: 40em) {
-      body {
-        padding: 1em 3em;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Maple Forensics</title>
+    <meta name="description" content="A demo of Stripe client-only Checkout" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+
+  <body>
+    <div class="sr-root">
+      <div class="sr-main" style="display: flex;">
+        <header class="sr-header">
+          <div class="sr-header__logo"></div>
+        </header>
+        <div class="sr-container">
+          <section class="container">
+            <h1>One-time Use</h1>
+            <button
+              data-checkout-mode="payment"
+              data-price-id="sku_GU4JYXyvvRb2sX"
+            >
+              $15 Basic Usage
+            </button>
+            <button
+              data-checkout-mode="payment"
+              data-price-id="sku_GU4KO8nfdg8G2Z"
+            >
+              $25.00 MaplePlus Usage
+            </button>
+    
+          </section>
+          <section class="container">
+            <h1>Subscription</h1>
+            <button
+              data-checkout-mode="subscription"
+              data-price-id="plan_GU4MXg0k0Uv1S6"
+            >
+             $20.00 per month for unlimited usage for the entire month. 
+            </button>
+          </section>
+        </div>
+        <div id="error-message"></div>
+      </div>
+    </div>
+    <div class="banner">
+      
+    </div>
+
+    <script>
+      // Replace with your own publishable key: https://dashboard.stripe.com/test/apikeys
+      var PUBLISHABLE_KEY = 'pk_test_Tr8olTkdFnnJVywwhNPHwnHK00HkHV4tnP';
+      // Replace with the domain you want your users to be redirected back to after payment
+      var DOMAIN = location.href.replace(/[^/]*$/, '');
+
+      if (PUBLISHABLE_KEY === 'pk_test_Tr8olTkdFnnJVywwhNPHwnHK00HkHV4tnP') {
+        console.log(
+          'Replace the hardcoded publishable key with your own publishable key: https://dashboard.stripe.com/test/apikeys'
+        );
       }
-    }
-    h1 { font-size: 3rem; font-weight: 600 }
-    a {
-      color: rgba(0,0,0,.6);
-      transition: color .1s ease-out;
-      text-decoration: none;
-      background-image: linear-gradient(transparent 50%, rgba(0,0,0,.6) 50%);
-      background-size: 4px 4px;
-      background-position: 0 1.125em;
-      background-repeat: repeat-x;
-    }
-    a:hover {
-      color: white; 
-      background-image: linear-gradient(transparent 50%, white 50%);
-    }
-    pre {
-      font-family: 'Source Code Pro', Consolas, Monaco, monospace;
-      text-transform: none;
-      letter-spacing: 0;
-      padding-top: .25em;
-      padding-bottom: .25em;
-      padding: .25em .75em;
-      overflow-x: scroll;
-      background-color: rgba(0,0,0,.2);
-    }
-    .right-align { text-align: right }
-    .py2 { padding-top: 2rem; padding-bottom: 2rem; }
-    .xs-show { display: none }
-    @media (max-width: 40em) { .xs-show { display: block } }
 
-    #carbonads {
-      display: inline-block;
-      font-size: 14px;
-      line-height: 1.25;
-      text-align: left;
-      max-width: 320px;
-      text-transform: none;
-    }
-    #carbonads a,
-    #carbonads a:hover {
-      text-decoration: none;
-      color: inherit;
-      background: none;
-    }
-    #carbonads span { display: block }
-    #carbonads > span::before,
-    #carbonads > span::after {
-      content: '';
-      display: table;
-    }
-    #carbonads > span::after {
-      clear: both;
-    }
-    .carbon-img {
-      float: left;
-      margin-right: .5em;
-    }
-    .carbon-img > img { display: block }
-    .carbon-text { overflow: hidden }
-    .carbon-poweredby {
-      float: left;
-      margin-top: .25em;
-      opacity: 0.5;
-    }
-    @media (min-width: 32em) {
-      .table { display: table; table-layout: fixed; width: 100%; }
-      .table-cell { display: table-cell; vertical-align: middle }
-    }
-  </style><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro&amp;subset=latin" media="all">
-</head>
-<body mouseup_handler="true" mouseup_event="true">
+      var stripe = Stripe(PUBLISHABLE_KEY);
 
-  <header class="py2">
-    
-  </header>
+      // Handle any errors from Checkout
+      var handleResult = function (result) {
+        if (result.error) {
+          var displayError = document.getElementById('error-message');
+          displayError.textContent = result.error.message;
+        }
+      };
 
-  
+      document.querySelectorAll('button').forEach(function (button) {
+        button.addEventListener('click', function (e) {
+          var mode = e.target.dataset.checkoutMode;
+          var priceId = e.target.dataset.priceId;
+          var items = [{ price: priceId, quantity: 1 }];
 
-
-  
-
-  <section class="py2">
-    <h1>this is what you get</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  <h1>when you mess with us.</h1><footer class="py2">
-    <p>
-    
-      <br>nick</p>
-  </footer>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js" type="text/javascript" async=""></script><script src="dist/fitter-happier-text.js"></script>
-  <script>
-    var nodes = document.querySelectorAll('[data-fitter-happier-text]');
-    fitterHappierText(nodes, { baseline: 16 });
-  </script>
-  <script type="text/javascript">
-    WebFontConfig = { google: { families: [ 'Source+Code+Pro::latin' ] } };
-    (function() {
-      var wf = document.createElement('script');
-      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-      wf.type = 'text/javascript';
-      wf.async = 'true';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(wf, s);
-    })();
-  </script>
-
-
-
-</section>
-
-
-
-<div id="settings_shadow"></div>
-
-</body></html>
+          // Make the call to Stripe.js to redirect to the checkout page
+          // with the sku or plan ID.
+          stripe
+            .redirectToCheckout({
+              mode: mode,
+              lineItems: items,
+              successUrl:
+                DOMAIN + 'success.html?session_id={CHECKOUT_SESSION_ID}',
+              cancelUrl:
+                DOMAIN + 'canceled.html?session_id={CHECKOUT_SESSION_ID}',
+            })
+            .then(handleResult);
+        });
+      });
+    </script>
+  </body>
+</html>
